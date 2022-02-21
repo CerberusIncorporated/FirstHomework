@@ -80,7 +80,7 @@ public class ArrayServiceStreamImplement implements ArrayService {
         double average = Arrays.stream(array.getArray())
                 .average()
                 .orElseThrow(CustomArrayException::new);
-        LOGGER.log(Level.INFO, String.format("[Stream]Average numbers in array %s is %d", array.toString(), average));
+        LOGGER.log(Level.INFO, String.format("[Stream]Average numbers in array %s ", array.toString(), average));
         return average;
     }
 
