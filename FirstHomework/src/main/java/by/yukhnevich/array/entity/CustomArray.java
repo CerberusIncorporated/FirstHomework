@@ -13,7 +13,7 @@ public class CustomArray {
 
     public CustomArray(int... array) {
         this.array = array;
-        LOGGER.log(Level.INFO,"Array initialized successfully");
+        LOGGER.log(Level.INFO, "Array initialized successfully");
     }
 
     public int[] getArray() {

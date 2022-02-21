@@ -8,22 +8,21 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ArrayServiceImplement implements ArrayService {
-    private static final Logger LOGGER = LogManager.getLogger(ArrayServiceImplement.class);
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+public class ArrayServiceStreamImplement implements ArrayService {
+    private static final Logger LOGGER = LogManager.getLogger(SortServiceStreamImplement.class);
 
     @Override
     public int findMinNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int min = array.getArray()[0];
-        for (int temp : array.getArray()) {
-            if (temp < min) {
-                min = temp;
-            }
-        }
-        LOGGER.log(Level.INFO, String.format("Min value in array %s is %d", array.toString(), min));
+        int min = Arrays.stream(array.getArray())
+                .min()
+                .orElseThrow(CustomArrayException::new);
+        LOGGER.log(Level.INFO, String.format("[Stream]Min value in array %s is %d", array.toString(), min));
         return min;
     }
 
@@ -32,15 +31,10 @@ public class ArrayServiceImplement implements ArrayService {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int max = array.getArray()[0];
-        for (int temp : array.getArray()) {
-            if (temp > max) {
-                max = temp;
-            }
-        }
-
-        LOGGER.log(Level.INFO, String.format("Max value in array %s is %d", array.toString(), max));
+        int max = Arrays.stream(array.getArray())
+                .max()
+                .orElseThrow(CustomArrayException::new);
+        LOGGER.log(Level.INFO, String.format("[Stream]Max value in array %s is %d", array.toString(), max));
         return max;
     }
 
@@ -49,12 +43,8 @@ public class ArrayServiceImplement implements ArrayService {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int sum = 0;
-        for (int i = 0; i < array.getArray().length; i++) {
-            sum += array.getArray()[i];
-        }
-        LOGGER.log(Level.INFO, String.format("Sum of array %s is %d", array.toString(), sum));
+        long sum = Arrays.stream(array.getArray()).sum();
+        LOGGER.log(Level.INFO, String.format("[Stream]Sum values in array %s is %d", array.toString(), sum));
         return sum;
     }
 
@@ -63,14 +53,10 @@ public class ArrayServiceImplement implements ArrayService {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int count = 0;
-        for (int i = 0; i < array.getArray().length; i++) {
-            if (array.getArray()[i] >= 0) {
-                count++;
-            }
-        }
-        LOGGER.log(Level.INFO, String.format("Count positive values in array %s is %d", array.toString(), count));
+        int count = (int) Arrays.stream(array.getArray())
+                .filter(s -> s >= 0)
+                .count();
+        LOGGER.log(Level.INFO, String.format("[Stream]Positive numbers in array %s is %d", array.toString(), count));
         return count;
     }
 
@@ -79,14 +65,10 @@ public class ArrayServiceImplement implements ArrayService {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int count = 0;
-        for (int i = 0; i < array.getArray().length; i++) {
-            if (array.getArray()[i] < 0) {
-                count++;
-            }
-        }
-        LOGGER.log(Level.INFO, String.format("Count negative value in array %s is %d", array.toString(), count));
+        int count = (int) Arrays.stream(array.getArray())
+                .filter(s -> s < 0)
+                .count();
+        LOGGER.log(Level.INFO, String.format("[Stream]Negative numbers in array %s is %d", array.toString(), count));
         return count;
     }
 
@@ -95,11 +77,10 @@ public class ArrayServiceImplement implements ArrayService {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int sum = (int) findSumOfArray(array);
-        int average = sum / array.getArray().length;
-
-        LOGGER.log(Level.INFO, String.format("Average values in array %s is %d", array.toString(), average));
+        double average = Arrays.stream(array.getArray())
+                .average()
+                .orElseThrow(CustomArrayException::new);
+        LOGGER.log(Level.INFO, String.format("[Stream]Average numbers in array %s is %d", array.toString(), average));
         return average;
     }
 
@@ -108,14 +89,12 @@ public class ArrayServiceImplement implements ArrayService {
         if (!ArrayValidation.validateArray(array)) {
             throw new CustomArrayException("Invalid input array [empty or null]");
         }
-
-        int[] tempArray = array.getArray();
-        for (int i = 0; i < tempArray.length; i++) {
-            if (tempArray[i] < 0) {
-                tempArray[i] = -1;
-            }
-        }
-        array.setArray(tempArray);
-        LOGGER.log(Level.INFO, String.format("All negative values in array is replaced %s", array.toString()));
+        int num = -1;
+        int[] newArray = IntStream.of(array.getArray())
+                .map(element -> element < 0 ? num : element)
+                .toArray();
+        CustomArray resultArray = new CustomArray(newArray.length);
+        array.setArray(newArray);
+        LOGGER.log(Level.INFO, String.format("[Stream]All negative numbers is replaced %s", array.toString()));
     }
 }

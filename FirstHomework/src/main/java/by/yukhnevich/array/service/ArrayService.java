@@ -15,7 +15,7 @@ public interface ArrayService {
 
     int findNegativeNumbers(CustomArray array) throws CustomArrayException;
 
-    int findAverageNumber(CustomArray array) throws CustomArrayException;
+    double findAverageNumber(CustomArray array) throws CustomArrayException;
 
     void replaceNegativeNumbers(CustomArray array) throws CustomArrayException;
 }
