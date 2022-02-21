@@ -1,15 +1,15 @@
 package test.yukhnevich.array.reader;
 
 import by.yukhnevich.array.exception.CustomArrayException;
-import by.yukhnevich.array.reader.CustomReader;
+import by.yukhnevich.array.reader.impl.CustomReaderImplement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CustomReaderTest {
-    private CustomReader customReader;
+public class CustomReaderImplementTest {
+    private CustomReaderImplement customReaderImplement;
 
     @DataProvider(name = "parseExceptionData")
     public Object[][] getExceptionData() {
@@ -22,19 +22,19 @@ public class CustomReaderTest {
 
     @BeforeClass
     public void init() {
-        customReader = new CustomReader();
+        customReaderImplement = new CustomReaderImplement();
     }
 
     @Test(expectedExceptions = CustomArrayException.class, dataProvider = "parseExceptionData")
     public void readLineExceptionTest(String path) throws CustomArrayException {
-        customReader.readFromFile(path);
+        customReaderImplement.readFromFile(path);
     }
 
     @Test
     public void readLineTest() {
         try {
             String expected = "[qwoejp, 123, - 52, 1, 2w, 3, -1 -2 -3, -1 - -2 -3, -4]";
-            String actual = customReader.readFromFile("src/main/resources/data/data.txt").toString();
+            String actual = customReaderImplement.readFromFile("src/main/resources/data/data.txt").toString();
             Assert.assertEquals(expected, actual);
         } catch (CustomArrayException e) {
             Assert.fail();
@@ -43,6 +43,6 @@ public class CustomReaderTest {
 
     @AfterClass
     public void terminate() {
-        customReader = null;
+        customReaderImplement = null;
     }
 }

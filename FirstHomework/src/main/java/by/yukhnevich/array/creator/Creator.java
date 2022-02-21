@@ -2,16 +2,16 @@ package by.yukhnevich.array.creator;
 
 import by.yukhnevich.array.entity.CustomArray;
 import by.yukhnevich.array.exception.CustomArrayException;
-import by.yukhnevich.array.parser.CustomParser;
-import by.yukhnevich.array.reader.CustomReader;
+import by.yukhnevich.array.parser.impl.CustomParserImplement;
+import by.yukhnevich.array.reader.impl.CustomReaderImplement;
 import by.yukhnevich.array.validation.fileValidation.RegexValidation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Creator {
-    private final CustomReader reader = new CustomReader();
-    private final CustomParser parser = new CustomParser();
+    private final CustomReaderImplement reader = new CustomReaderImplement();
+    private final CustomParserImplement parser = new CustomParserImplement();
     private final RegexValidation validation = new RegexValidation();
 
 

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ArrayServiceImplement implements ArrayService {
-    private static final Logger LOGGER = LogManager.getLogger(ArrayServiceImplement.class);
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public int findMinNumber(CustomArray array) throws CustomArrayException {

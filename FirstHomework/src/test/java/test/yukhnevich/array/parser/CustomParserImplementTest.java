@@ -1,12 +1,12 @@
 package test.yukhnevich.array.parser;
 
 import by.yukhnevich.array.exception.CustomArrayException;
-import by.yukhnevich.array.parser.CustomParser;
+import by.yukhnevich.array.parser.impl.CustomParserImplement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CustomParserTest {
-    private final CustomParser parser = new CustomParser();
+public class CustomParserImplementTest {
+    private final CustomParserImplement parser = new CustomParserImplement();
 
     @Test
     public void parseTest() throws CustomArrayException {
