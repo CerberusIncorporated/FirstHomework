@@ -4,13 +4,14 @@ import by.yukhnevich.array.entity.CustomArray;
 import by.yukhnevich.array.exception.CustomArrayException;
 import by.yukhnevich.array.service.ArrayService;
 import by.yukhnevich.array.service.impl.ArrayServiceImplement;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 public class ArrayServiceImplementTest {
     private CustomArray array;
@@ -25,21 +26,21 @@ public class ArrayServiceImplementTest {
     @Test
     public void findMaxNumberTest() throws CustomArrayException {
         int expected = 45;
-        int result = arrayServiceImplement.findMaxNumber(array);
+        OptionalInt result = arrayServiceImplement.findMaxNumber(array);
         Assert.assertEquals(expected, result);
     }
 
     @Test
     public void findMinNumberTest() throws CustomArrayException {
         int expected = -19;
-        int result = arrayServiceImplement.findMinNumber(array);
+        OptionalInt result = arrayServiceImplement.findMinNumber(array);
         Assert.assertEquals(expected, result);
     }
 
     @Test
     public void findSumOfArrayTest() throws CustomArrayException {
         long expected = 29;
-        long result = arrayServiceImplement.findSumOfArray(array);
+        OptionalLong result = arrayServiceImplement.findSumOfArray(array);
         Assert.assertEquals(expected, result);
     }
 
@@ -60,7 +61,7 @@ public class ArrayServiceImplementTest {
     @Test
     public void findAverageNumberTest() throws CustomArrayException {
         double expected = 3;
-        double result = arrayServiceImplement.findAverageNumber(array);
+        OptionalDouble result = arrayServiceImplement.findAverageNumber(array);
         Assert.assertEquals(expected, result);
     }
 

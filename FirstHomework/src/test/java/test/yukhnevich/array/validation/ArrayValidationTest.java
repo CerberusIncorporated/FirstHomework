@@ -13,7 +13,7 @@ public class ArrayValidationTest {
     public Object[][] getData() {
         return new Object[][]{
                 {null, false},
-                {new CustomArray(), false},
+                {new CustomArray(12, null), false},
                 {new CustomArray(1, 4, 2), true}
         };
     }

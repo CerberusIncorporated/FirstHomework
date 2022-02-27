@@ -8,13 +8,17 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
+
 public class ArrayServiceImplement implements ArrayService {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public int findMinNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMinNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalInt.empty();
         }
 
         int min = array.getArray()[0];
@@ -24,13 +28,13 @@ public class ArrayServiceImplement implements ArrayService {
             }
         }
         LOGGER.log(Level.INFO, String.format("Min value in array %s is %d", array.toString(), min));
-        return min;
+        return OptionalInt.of(min);
     }
 
     @Override
-    public int findMaxNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMaxNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalInt.empty();
         }
 
         int max = array.getArray()[0];
@@ -41,13 +45,13 @@ public class ArrayServiceImplement implements ArrayService {
         }
 
         LOGGER.log(Level.INFO, String.format("Max value in array %s is %d", array.toString(), max));
-        return max;
+        return OptionalInt.of(max);
     }
 
     @Override
-    public long findSumOfArray(CustomArray array) throws CustomArrayException {
+    public OptionalLong findSumOfArray(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalLong.empty();
         }
 
         int sum = 0;
@@ -55,7 +59,7 @@ public class ArrayServiceImplement implements ArrayService {
             sum += array.getArray()[i];
         }
         LOGGER.log(Level.INFO, String.format("Sum of array %s is %d", array.toString(), sum));
-        return sum;
+        return OptionalLong.of(sum);
     }
 
     @Override
@@ -91,16 +95,21 @@ public class ArrayServiceImplement implements ArrayService {
     }
 
     @Override
-    public double findAverageNumber(CustomArray array) throws CustomArrayException {
+    public OptionalDouble findAverageNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalDouble.empty();
         }
 
-        int sum = (int) findSumOfArray(array);
-        int average = sum / array.getArray().length;
+        long sum = 0;
+
+        for (int element : array.getArray()) {
+            sum += element;
+        }
+
+        double average = sum / array.getArray().length;
 
         LOGGER.log(Level.INFO, String.format("Average values in array %s is %d", array.toString(), average));
-        return average;
+        return OptionalDouble.of(average);
     }
 
     @Override

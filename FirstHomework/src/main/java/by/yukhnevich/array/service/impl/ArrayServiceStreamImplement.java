@@ -9,43 +9,46 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 import java.util.stream.IntStream;
 
 public class ArrayServiceStreamImplement implements ArrayService {
     private static final Logger LOGGER = LogManager.getLogger(SortServiceStreamImplement.class);
 
     @Override
-    public int findMinNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMinNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalInt.empty();
         }
         int min = Arrays.stream(array.getArray())
                 .min()
                 .orElseThrow(CustomArrayException::new);
         LOGGER.log(Level.INFO, String.format("[Stream]Min value in array %s is %d", array.toString(), min));
-        return min;
+        return OptionalInt.of(min);
     }
 
     @Override
-    public int findMaxNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMaxNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalInt.empty();
         }
         int max = Arrays.stream(array.getArray())
                 .max()
                 .orElseThrow(CustomArrayException::new);
         LOGGER.log(Level.INFO, String.format("[Stream]Max value in array %s is %d", array.toString(), max));
-        return max;
+        return OptionalInt.of(max);
     }
 
     @Override
-    public long findSumOfArray(CustomArray array) throws CustomArrayException {
+    public OptionalLong findSumOfArray(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalLong.empty();
         }
         long sum = Arrays.stream(array.getArray()).sum();
         LOGGER.log(Level.INFO, String.format("[Stream]Sum values in array %s is %d", array.toString(), sum));
-        return sum;
+        return OptionalLong.of(sum);
     }
 
     @Override
@@ -73,15 +76,15 @@ public class ArrayServiceStreamImplement implements ArrayService {
     }
 
     @Override
-    public double findAverageNumber(CustomArray array) throws CustomArrayException {
+    public OptionalDouble findAverageNumber(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            return OptionalDouble.empty();
         }
         double average = Arrays.stream(array.getArray())
                 .average()
                 .orElseThrow(CustomArrayException::new);
         LOGGER.log(Level.INFO, String.format("[Stream]Average numbers in array %s ", array.toString(), average));
-        return average;
+        return OptionalDouble.of(average);
     }
 
     @Override

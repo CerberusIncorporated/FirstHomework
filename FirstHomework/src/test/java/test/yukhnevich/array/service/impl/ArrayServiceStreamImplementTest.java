@@ -9,6 +9,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
+
 public class ArrayServiceStreamImplementTest {
     private CustomArray array;
     private ArrayService arrayServiceStreamImplement;
@@ -22,21 +26,21 @@ public class ArrayServiceStreamImplementTest {
     @Test
     public void findMaxNumberTest() throws CustomArrayException {
         int expected = 45;
-        int result = arrayServiceStreamImplement.findMaxNumber(array);
+        OptionalInt result = arrayServiceStreamImplement.findMaxNumber(array);
         Assert.assertEquals(expected, result);
     }
 
     @Test
     public void findMinNumberTest() throws CustomArrayException {
         int expected = -19;
-        int result = arrayServiceStreamImplement.findMinNumber(array);
+        OptionalInt result = arrayServiceStreamImplement.findMinNumber(array);
         Assert.assertEquals(expected, result);
     }
 
     @Test
     public void findSumOfArrayTest() throws CustomArrayException {
         long expected = 29;
-        long result = arrayServiceStreamImplement.findSumOfArray(array);
+        OptionalLong result = arrayServiceStreamImplement.findSumOfArray(array);
         Assert.assertEquals(expected, result);
     }
 
@@ -57,7 +61,7 @@ public class ArrayServiceStreamImplementTest {
     @Test
     public void findAverageNumberTest() throws CustomArrayException {
         double expected = 3.625;
-        double result = arrayServiceStreamImplement.findAverageNumber(array);
+        OptionalDouble result = arrayServiceStreamImplement.findAverageNumber(array);
         Assert.assertEquals(expected, result);
     }
 
