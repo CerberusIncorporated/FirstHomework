@@ -27,7 +27,7 @@ public class ArrayServiceImplementTest {
     public void findMaxNumberTest() throws CustomArrayException {
         int expected = 45;
         OptionalInt result = arrayServiceImplement.findMaxNumber(array);
-        Assert.assertEquals(expected, result);
+        Assert.assertEquals(expected, result.getAsInt());
     }
 
     @Test

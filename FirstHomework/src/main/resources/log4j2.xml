@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
-
+<Configuration status = "info">
+    <Properties>
+        <property name="LOG_DIR">logs</property>
+        <property name="pattern_file">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level
+            %logger{5} - %msg%n</property>
+        <property name="pattern_console">%relative %-5level %logger{1} - %msg%n
+        </property>
+    </Properties>
+    <ThresholdFilter level="trace"/>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-        <PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" />
+            <PatternLayout pattern="${pattern_console}"/>
         </Console>
-
-        <RollingFile name="RollingFile" filename="log/mylog.log"
-                     filepattern="${logPath}/%d{YYYYMMddHHmmss}-fargo.log">
-            <PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" />
+        <RollingFile name="FileRolling" fileName="logs/${date:yyyy-MM-dd}/log.log" append="true"
+                     filePattern = "logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.log">
+            <PatternLayout pattern="${pattern_file}"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="10 MB" />
+                <SizeBasedTriggeringPolicy size="15 KB"/>
             </Policies>
-            <DefaultRolloverStrategy max="20" />
+            <DefaultRolloverStrategy max="10"/>
         </RollingFile>
-
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level = "trace" >
+            <AppenderRef ref="FileRolling" />
             <AppenderRef ref="Console" />
-            <AppenderRef ref="RollingFile" />
         </Root>
     </Loggers>
 </Configuration>

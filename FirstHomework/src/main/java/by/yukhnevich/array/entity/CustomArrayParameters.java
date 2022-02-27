@@ -3,14 +3,15 @@ package by.yukhnevich.array.entity;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 public class CustomArrayParameters {
     private OptionalInt max;
     private OptionalInt min;
-    private OptionalInt sum;
+    private OptionalLong sum;
     private OptionalDouble average;
 
-    public CustomArrayParameters(OptionalInt max, OptionalInt min, OptionalInt sum, OptionalDouble average) {
+    public CustomArrayParameters(OptionalInt max, OptionalInt min, OptionalLong sum, OptionalDouble average) {
         this.max = max;
         this.min = min;
         this.sum = sum;
@@ -33,11 +34,11 @@ public class CustomArrayParameters {
         this.min = min;
     }
 
-    public OptionalInt getSum() {
+    public OptionalLong getSum() {
         return sum;
     }
 
-    public void setSum(OptionalInt sum) {
+    public void setSum(OptionalLong sum) {
         this.sum = sum;
     }
 

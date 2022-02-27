@@ -11,7 +11,7 @@ public class CustomArrayEvent extends EventObject {
     }
 
     @Override
-    public Object getSource() {
+    public CustomArray getSource() {
         return (CustomArray) super.getSource();
     }
 }
