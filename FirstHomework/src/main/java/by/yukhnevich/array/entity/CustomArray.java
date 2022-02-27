@@ -7,11 +7,13 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 
 
-public class CustomArray {
-    private static final Logger LOGGER = LogManager.getLogger(CustomArray.class);
+public class CustomArray extends AbstractArray {
+    private static final Logger LOGGER = LogManager.getLogger();
     private int[] array;
+    private int id;
 
-    public CustomArray(int... array) {
+    public CustomArray(int id, int... array) {
+        this.id = id;
         this.array = array;
         LOGGER.log(Level.INFO, "Array initialized successfully");
     }
@@ -20,8 +22,13 @@ public class CustomArray {
         return Arrays.copyOf(array, array.length);
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setArray(int[] array) {
         this.array = array;
+        notifyObservers();
     }
 
     @Override
@@ -29,20 +36,21 @@ public class CustomArray {
         return "CustomArray{" + "array=" + Arrays.toString(array) + '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         CustomArray that = (CustomArray) o;
-        return Arrays.equals(array, that.array);
+        return getId() == that.getId() && Arrays.equals(array, that.array);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(array);
+        int result = super.hashCode();
+        result = result * 31 + Arrays.hashCode(array);
+        return result;
     }
+
+
 }
