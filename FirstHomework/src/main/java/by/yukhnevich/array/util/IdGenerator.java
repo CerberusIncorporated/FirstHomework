@@ -4,13 +4,13 @@ public class IdGenerator {
     private static final int START_ID = 1;
     private static final int END_ID = 1000000;
 
-    private int idCounter;
+    private static int idCounter;
 
     private IdGenerator() {
         idCounter = START_ID;
     }
 
-    public int generateId() {
+    public static int generateId() {
         if (idCounter == END_ID) {
             idCounter = START_ID;
         }

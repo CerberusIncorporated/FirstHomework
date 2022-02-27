@@ -11,6 +11,9 @@ public class CustomArrayParameters {
     private OptionalLong sum;
     private OptionalDouble average;
 
+    public CustomArrayParameters() {
+    }
+
     public CustomArrayParameters(OptionalInt max, OptionalInt min, OptionalLong sum, OptionalDouble average) {
         this.max = max;
         this.min = min;

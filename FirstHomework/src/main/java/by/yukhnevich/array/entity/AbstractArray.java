@@ -35,10 +35,7 @@ public abstract class AbstractArray implements CustomArrayObservable {
         CustomArrayEvent event = new CustomArrayEvent(this);
         if (observers != null) {
             observers.clearParameters(event);
-            observers.updateAvgValue(event);
-            observers.updateSumValue(event);
-            observers.updateMaxValue(event);
-            observers.updateMinValue(event);
+            observers.changedParameters(event);
         }
     }
 }
