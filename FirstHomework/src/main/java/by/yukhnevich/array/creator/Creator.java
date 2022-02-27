@@ -31,7 +31,7 @@ public class Creator {
 
         int[] array = parser.parse(firstCorrectString);
 
-        return new CustomArray(array);
+        return new CustomArray(1,array); //fixme
     }
 
 }

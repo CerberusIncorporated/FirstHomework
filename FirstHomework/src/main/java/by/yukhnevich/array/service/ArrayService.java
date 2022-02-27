@@ -9,17 +9,17 @@ import java.util.OptionalLong;
 
 public interface ArrayService {
 
-    OptionalInt findMinNumber(CustomArray array) throws CustomArrayException;
+    OptionalInt findMinNumber(CustomArray array);
 
-    OptionalInt findMaxNumber(CustomArray array) throws CustomArrayException;
+    OptionalInt findMaxNumber(CustomArray array);
 
-    OptionalLong findSumOfArray(CustomArray array) throws CustomArrayException;
+    OptionalLong findSumOfArray(CustomArray array);
 
-    int findPositiveNumbers(CustomArray array) throws CustomArrayException;
+    int findPositiveNumbers(CustomArray array);
 
     int findNegativeNumbers(CustomArray array) throws CustomArrayException;
 
-    OptionalDouble findAverageNumber(CustomArray array) throws CustomArrayException;
+    OptionalDouble findAverageNumber(CustomArray array);
 
     void replaceNegativeNumbers(CustomArray array) throws CustomArrayException;
 }

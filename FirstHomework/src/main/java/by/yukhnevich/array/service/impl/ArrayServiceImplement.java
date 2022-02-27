@@ -16,7 +16,7 @@ public class ArrayServiceImplement implements ArrayService {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public OptionalInt findMinNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMinNumber(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalInt.empty();
         }
@@ -32,7 +32,7 @@ public class ArrayServiceImplement implements ArrayService {
     }
 
     @Override
-    public OptionalInt findMaxNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMaxNumber(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalInt.empty();
         }
@@ -49,7 +49,7 @@ public class ArrayServiceImplement implements ArrayService {
     }
 
     @Override
-    public OptionalLong findSumOfArray(CustomArray array) throws CustomArrayException {
+    public OptionalLong findSumOfArray(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalLong.empty();
         }
@@ -63,9 +63,13 @@ public class ArrayServiceImplement implements ArrayService {
     }
 
     @Override
-    public int findPositiveNumbers(CustomArray array) throws CustomArrayException {
+    public int findPositiveNumbers(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            try {
+                throw new CustomArrayException("Invalid input array [empty or null]");
+            } catch (CustomArrayException e) {
+                e.printStackTrace();
+            }
         }
 
         int count = 0;
@@ -95,7 +99,7 @@ public class ArrayServiceImplement implements ArrayService {
     }
 
     @Override
-    public OptionalDouble findAverageNumber(CustomArray array) throws CustomArrayException {
+    public OptionalDouble findAverageNumber(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalDouble.empty();
         }

@@ -18,31 +18,41 @@ public class ArrayServiceStreamImplement implements ArrayService {
     private static final Logger LOGGER = LogManager.getLogger(SortServiceStreamImplement.class);
 
     @Override
-    public OptionalInt findMinNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMinNumber(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalInt.empty();
         }
-        int min = Arrays.stream(array.getArray())
-                .min()
-                .orElseThrow(CustomArrayException::new);
+        int min = 0;
+        try {
+            min = Arrays.stream(array.getArray())
+                    .min()
+                    .orElseThrow(CustomArrayException::new);
+        } catch (CustomArrayException e) {
+            e.printStackTrace();
+        }
         LOGGER.log(Level.INFO, String.format("[Stream]Min value in array %s is %d", array.toString(), min));
         return OptionalInt.of(min);
     }
 
     @Override
-    public OptionalInt findMaxNumber(CustomArray array) throws CustomArrayException {
+    public OptionalInt findMaxNumber(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalInt.empty();
         }
-        int max = Arrays.stream(array.getArray())
-                .max()
-                .orElseThrow(CustomArrayException::new);
+        int max = 0;
+        try {
+            max = Arrays.stream(array.getArray())
+                    .max()
+                    .orElseThrow(CustomArrayException::new);
+        } catch (CustomArrayException e) {
+            e.printStackTrace();
+        }
         LOGGER.log(Level.INFO, String.format("[Stream]Max value in array %s is %d", array.toString(), max));
         return OptionalInt.of(max);
     }
 
     @Override
-    public OptionalLong findSumOfArray(CustomArray array) throws CustomArrayException {
+    public OptionalLong findSumOfArray(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalLong.empty();
         }
@@ -52,9 +62,13 @@ public class ArrayServiceStreamImplement implements ArrayService {
     }
 
     @Override
-    public int findPositiveNumbers(CustomArray array) throws CustomArrayException {
+    public int findPositiveNumbers(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
-            throw new CustomArrayException("Invalid input array [empty or null]");
+            try {
+                throw new CustomArrayException("Invalid input array [empty or null]");
+            } catch (CustomArrayException e) {
+                e.printStackTrace();
+            }
         }
         int count = (int) Arrays.stream(array.getArray())
                 .filter(s -> s >= 0)
@@ -76,13 +90,18 @@ public class ArrayServiceStreamImplement implements ArrayService {
     }
 
     @Override
-    public OptionalDouble findAverageNumber(CustomArray array) throws CustomArrayException {
+    public OptionalDouble findAverageNumber(CustomArray array) {
         if (!ArrayValidation.validateArray(array)) {
             return OptionalDouble.empty();
         }
-        double average = Arrays.stream(array.getArray())
-                .average()
-                .orElseThrow(CustomArrayException::new);
+        double average = 0;
+        try {
+            average = Arrays.stream(array.getArray())
+                    .average()
+                    .orElseThrow(CustomArrayException::new);
+        } catch (CustomArrayException e) {
+            e.printStackTrace();
+        }
         LOGGER.log(Level.INFO, String.format("[Stream]Average numbers in array %s ", array.toString(), average));
         return OptionalDouble.of(average);
     }
