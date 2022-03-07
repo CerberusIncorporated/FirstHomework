@@ -112,7 +112,7 @@ public class ArrayServiceImplement implements ArrayService {
 
         double average = sum / array.getArray().length;
 
-        LOGGER.log(Level.INFO, String.format("Average values in array %s is %d", array.toString(), average));
+        LOGGER.log(Level.INFO, String.format("Average values in array %s is %f", array.toString(), average));
         return OptionalDouble.of(average);
     }
 

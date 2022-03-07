@@ -20,7 +20,7 @@ public interface CustomArrayRepository {
 
     CustomArray set(int index, CustomArray arrayEntity);
 
-    List<CustomArray> query(CustomArrayRepositorySpecification specification );
+    List<CustomArray> query(CustomArrayRepositorySpecification specification);
 
     List<CustomArray> sort(Comparator<? super CustomArray> comparator);
 }

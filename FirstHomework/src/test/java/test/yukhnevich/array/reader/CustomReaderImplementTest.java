@@ -34,7 +34,7 @@ public class CustomReaderImplementTest {
     public void readLineTest() {
         try {
             String expected = "[qwoejp, 123, - 52, 1, 2w, 3, -1 -2 -3, -1 - -2 -3, -4]";
-            String actual = customReaderImplement.readFromFile("src/main/resources/data/data.txt").toString();
+            String actual = customReaderImplement.readFromFile("src/test/resources/data.txt").toString();
             Assert.assertEquals(expected, actual);
         } catch (CustomArrayException e) {
             Assert.fail();

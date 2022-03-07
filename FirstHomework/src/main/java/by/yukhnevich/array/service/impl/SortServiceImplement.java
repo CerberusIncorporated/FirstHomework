@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 public class SortServiceImplement implements SortService {
     private static final Logger LOGGER = LogManager.getLogger(SortServiceImplement.class);
+
     @Override
     public void bubbleSort(CustomArray array) throws CustomArrayException {
         if (!ArrayValidation.validateArray(array)) {

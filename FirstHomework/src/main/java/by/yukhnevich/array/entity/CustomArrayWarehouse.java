@@ -28,8 +28,9 @@ public class CustomArrayWarehouse {
     public CustomArrayParameters remove(int arrayId) {
         return warehouse.remove(arrayId);
     }
-    public CustomArrayParameters clear(int arrayId){
-        return warehouse.replace(arrayId,new CustomArrayParameters(OptionalInt.empty(),
-                OptionalInt.empty(), OptionalLong.empty(),OptionalDouble.empty()));
+
+    public CustomArrayParameters clear(int arrayId) {
+        return warehouse.replace(arrayId, new CustomArrayParameters(OptionalInt.empty(),
+                OptionalInt.empty(), OptionalLong.empty(), OptionalDouble.empty()));
     }
 }

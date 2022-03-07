@@ -19,7 +19,7 @@ public class SumSpecificationRepository implements CustomArrayRepositorySpecific
         ArrayService action = new ArrayServiceImplement();
         OptionalLong arraySum = action.findSumOfArray(array);
         if (arraySum.isPresent()) {
-            return arraySum.getAsLong() == sum;
+            return arraySum.getAsLong() >= sum;
         } else {
             return false;
         }

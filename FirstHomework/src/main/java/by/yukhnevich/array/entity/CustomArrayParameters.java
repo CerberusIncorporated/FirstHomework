@@ -12,6 +12,10 @@ public class CustomArrayParameters {
     private OptionalDouble average;
 
     public CustomArrayParameters() {
+        max = OptionalInt.empty();
+        min = OptionalInt.empty();
+        sum = OptionalLong.empty();
+        average = OptionalDouble.empty();
     }
 
     public CustomArrayParameters(OptionalInt max, OptionalInt min, OptionalLong sum, OptionalDouble average) {

@@ -4,6 +4,7 @@ import by.yukhnevich.array.entity.CustomArray;
 import by.yukhnevich.array.exception.CustomArrayException;
 import by.yukhnevich.array.parser.impl.CustomParserImplement;
 import by.yukhnevich.array.reader.impl.CustomReaderImplement;
+import by.yukhnevich.array.util.IdGenerator;
 import by.yukhnevich.array.validation.fileValidation.RegexValidation;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class Creator {
 
         int[] array = parser.parse(firstCorrectString);
 
-        return new CustomArray(1,array); //fixme
+        return new CustomArray(IdGenerator.generateId(),array); 
     }
 
 }

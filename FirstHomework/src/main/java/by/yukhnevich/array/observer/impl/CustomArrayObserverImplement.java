@@ -36,7 +36,7 @@ public class CustomArrayObserverImplement implements CustomArrayObserver {
 
         CustomArrayParameters parameters = warehouse.get(array.getId());
 
-        if(parameters==null){
+        if (parameters == null) {
             parameters = new CustomArrayParameters(max, min, sum, average);
             warehouse.put(array.getId(), parameters);
             LOGGER.info("CustomArray " + array.getId() + " parameters added to warehouse");

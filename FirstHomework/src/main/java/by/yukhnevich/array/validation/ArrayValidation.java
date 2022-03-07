@@ -7,6 +7,10 @@ public class ArrayValidation {
     }
 
     public static boolean validateArray(CustomArray array) {
-        return array != null && array.getArray().length != 0;
+        try {
+            return array != null && array.getArray().length != 0;
+        } catch (Exception exception) {
+            return false;
+        }
     }
 }

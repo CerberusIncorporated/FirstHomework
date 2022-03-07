@@ -4,6 +4,7 @@ import by.yukhnevich.array.entity.CustomArray;
 import by.yukhnevich.array.exception.CustomArrayException;
 import by.yukhnevich.array.service.ArrayService;
 import by.yukhnevich.array.service.impl.ArrayServiceImplement;
+import by.yukhnevich.array.util.IdGenerator;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,33 +20,33 @@ public class ArrayServiceImplementTest {
 
     @BeforeClass
     public void init() {
-        array = new CustomArray(5, 1, -6, 0, 45, 0, -19, 3);
+        array = new CustomArray(IdGenerator.generateId(), 5, 1, -6, 0, 45, 0, -19, 3);
         arrayServiceImplement = new ArrayServiceImplement();
     }
 
     @Test
-    public void findMaxNumberTest() throws CustomArrayException {
+    public void findMaxNumberTest() {
         int expected = 45;
         OptionalInt result = arrayServiceImplement.findMaxNumber(array);
         Assert.assertEquals(expected, result.getAsInt());
     }
 
     @Test
-    public void findMinNumberTest() throws CustomArrayException {
+    public void findMinNumberTest() {
         int expected = -19;
         OptionalInt result = arrayServiceImplement.findMinNumber(array);
-        Assert.assertEquals(expected, result);
+        Assert.assertEquals(expected, result.getAsInt());
     }
 
     @Test
-    public void findSumOfArrayTest() throws CustomArrayException {
+    public void findSumOfArrayTest() {
         long expected = 29;
         OptionalLong result = arrayServiceImplement.findSumOfArray(array);
-        Assert.assertEquals(expected, result);
+        Assert.assertEquals(expected, result.getAsLong());
     }
 
     @Test
-    public void findPositiveNumbersTest() throws CustomArrayException {
+    public void findPositiveNumbersTest() {
         int expected = 6;
         int result = arrayServiceImplement.findPositiveNumbers(array);
         Assert.assertEquals(expected, result);
@@ -59,10 +60,10 @@ public class ArrayServiceImplementTest {
     }
 
     @Test
-    public void findAverageNumberTest() throws CustomArrayException {
+    public void findAverageNumberTest() {
         double expected = 3;
         OptionalDouble result = arrayServiceImplement.findAverageNumber(array);
-        Assert.assertEquals(expected, result);
+        Assert.assertEquals(expected, result.getAsDouble());
     }
 
     @Test

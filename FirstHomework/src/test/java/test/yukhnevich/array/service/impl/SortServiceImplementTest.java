@@ -4,6 +4,7 @@ import by.yukhnevich.array.entity.CustomArray;
 import by.yukhnevich.array.exception.CustomArrayException;
 import by.yukhnevich.array.service.SortService;
 import by.yukhnevich.array.service.impl.SortServiceImplement;
+import by.yukhnevich.array.util.IdGenerator;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -15,7 +16,7 @@ public class SortServiceImplementTest {
 
     @BeforeTest
     public void init() {
-        array = new CustomArray(9, 8, 7, 2, 6, 1, 5, 4, 3);
+        array = new CustomArray(IdGenerator.generateId(), 9, 8, 7, 2, 6, 1, 5, 4, 3);
         sortService = new SortServiceImplement();
     }
 
