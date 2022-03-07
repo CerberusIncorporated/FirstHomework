@@ -32,7 +32,7 @@ public class Creator {
 
         int[] array = parser.parse(firstCorrectString);
 
-        return new CustomArray(IdGenerator.generateId(),array); 
+        return new CustomArray(IdGenerator.generateId(),array);
     }
 
 }
