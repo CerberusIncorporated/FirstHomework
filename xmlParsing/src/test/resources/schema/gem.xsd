@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://test.yukhnevich.xmltask"
-        xmlns:tns="http://test.yukhnevich.xmltask"
+        targetNamespace="http://test.yukhnevich.xmltask/gems"
+        xmlns:tns="http://test.yukhnevich.xmltask/gems"
         elementFormDefault="qualified">
     <complexType name="gem">
         <sequence>
@@ -20,12 +20,12 @@
         <complexContent>
             <extension base="tns:gem">
                 <sequence>
-                    <element name="type" type="tns:preciousType"/>
+                    <element name="type" type="tns:precious-type"/>
                 </sequence>
             </extension>
         </complexContent>
     </complexType>
-    <complexType name="semiPrecious">
+    <complexType name="semi-precious">
         <complexContent>
             <extension base="tns:gem">
                 <sequence>
@@ -62,7 +62,7 @@
         </restriction>
     </simpleType>
 
-    <simpleType name="preciousType">
+    <simpleType name="precious-type">
         <restriction base="string">
             <enumeration value="diamond"/>
             <enumeration value="sapphire"/>
@@ -80,5 +80,5 @@
     </element>
     <element name="gem" type="tns:gem" abstract="true"/>
     <element name="precious" type="tns:precious" substitutionGroup="tns:gem"/>
-    <element name="semi-precious" type="tns:semiPrecious" substitutionGroup="tns:gem"/>
+    <element name="semi-precious" type="tns:semi-precious" substitutionGroup="tns:gem"/>
 </schema>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns="http://test.yukhnevich.xmltask"
-      xsi:schemaLocation="http://test.yukhnevich.xmltask  ../schema/gem.xsd">
+      xmlns="http://test.yukhnevich.xmltask/gems"
+      xsi:schemaLocation="http://test.yukhnevich.xmltask/gems   ../schema/gem.xsd">
 
     <precious name="Esmeralda" id="A-000002">
         <origin>North America</origin>
