@@ -107,29 +107,30 @@ public abstract class Gem {
 
         Gem gem = (Gem) o;
 
-        return transparency == gem.transparency
-                && facets == gem.facets
-                && Double.compare(gem.mass, mass) == 0
-                && id.equals(gem.id)
-                && name.equals(gem.name)
-                && origin == gem.origin
-                && extractionTime.equals(gem.extractionTime)
-                && color.equals(gem.color);
+        if (transparency != gem.transparency) return false;
+        if (facets != gem.facets) return false;
+        if (Double.compare(gem.mass, mass) != 0) return false;
+        if (id != null ? !id.equals(gem.id) : gem.id != null) return false;
+        if (name != null ? !name.equals(gem.name) : gem.name != null) return false;
+        if (origin != gem.origin) return false;
+        if (extractionTime != null ? !extractionTime.equals(gem.extractionTime) : gem.extractionTime != null)
+            return false;
+        return color != null ? color.equals(gem.color) : gem.color == null;
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-
-        result = 31 * result + (id == null ? 0 : id.hashCode());
-        result = 31 * result + (name == null ? 0 : name.hashCode());
-        result = 31 * result + (origin == null ? 0 : origin.hashCode());
-        result = 31 * result + (extractionTime == null ? 0 : extractionTime.hashCode());
-        result = 31 * result + (color == null ? 0 : color.hashCode());
+        int result;
+        long temp;
+        result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (origin != null ? origin.hashCode() : 0);
+        result = 31 * result + (extractionTime != null ? extractionTime.hashCode() : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + transparency;
         result = 31 * result + facets;
-        result = 31 * result + Double.valueOf(mass).hashCode();
-
+        temp = Double.doubleToLongBits(mass);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
