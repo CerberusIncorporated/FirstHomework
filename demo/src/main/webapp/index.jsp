@@ -16,6 +16,8 @@ Password:    <input type="password" name="pass" value=""/>
     <input type="submit" name="sub" value="Push"/>
     <br>
     ${login_msg}
+    <br>
+    ${filter_attr}
 </form>
 </body>
 </html>
